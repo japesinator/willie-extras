@@ -168,4 +168,4 @@ def nws_lookup(bot, trigger):
             bot.msg(trigger.nick, more_info.format(location, master_url))
 
 if __name__ == '__main__':
-    print __doc__.strip()
+    print(__doc__.strip())
