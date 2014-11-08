@@ -3,7 +3,7 @@ import urllib.request
 import json
 
 @module.commands('anagram')
-@priority('low')
+@module.priority('low')
 def anagram(bot, trigger):
     try:
         url = "http://www.anagramica.com/best/:" + trigger
