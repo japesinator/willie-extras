@@ -6,7 +6,7 @@ import json
 @module.priority('low')
 def anagram(bot, trigger):
     try:
-        url = "http://www.anagramica.com/best/:" + urllib.parse.quote(trigger)
+        url = "http://www.anagramica.com/best/:" + urllib.parse.quote(trigger.group(2))
         data = urllib.request.urlopen(url).read().decode("utf-8")
         result = json.loads(data)
         bot.say(result.get("best")[0])
