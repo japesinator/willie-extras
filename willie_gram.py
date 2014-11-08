@@ -1,4 +1,4 @@
-from willie import module, priority
+from willie import module
 import urllib.request
 import json
 
