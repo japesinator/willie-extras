@@ -34,7 +34,7 @@ def configure(config):
     """
     which = config.option("This module conflicts with the default dice module. Should I disable it and to allow this one to run", True)
     module = "dice" if which else "dicelog"
-    print "The %s module is being added to the module blacklist." % module
+    print("The %s module is being added to the module blacklist." % module)
     if config.has_option('core', 'exclude'):
         if module not in config.core.exclude:
             config.core.exclude = ','.join([config.core.exclude, ' module'])
@@ -184,4 +184,4 @@ def campaign(bot, trigger):
     bot.say("The current list is: " + bot.config.dicelog.campaigns)
 
 if __name__ == '__main__':
-    print __doc__.strip()
+    print(__doc__.strip())
