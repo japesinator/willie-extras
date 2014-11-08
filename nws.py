@@ -96,7 +96,7 @@ def nws_lookup(bot, trigger):
         url1 = county_list.format(states[state])
         page1 = web.get(url1).split("\n")
         for line in page1:
-            mystr = ">" + unicode(county) + "<"
+            mystr = ">" + county + "<"
             if mystr in line.lower():
                 url_part2 = line[9:36]
                 break
@@ -120,7 +120,7 @@ def nws_lookup(bot, trigger):
                 state = state[0].lower()
                 state = states[state].upper()
                 location = city[0] + ", " + state
-                fips_combo = unicode(state) + "C" + unicode(fips[0])
+                fips_combo = state + "C" + fips[0]
                 master_url = alerts.format(fips_combo)
             else:
                 bot.reply("ZIP code does not exist.")
@@ -137,7 +137,7 @@ def nws_lookup(bot, trigger):
             bot.reply(nomsg.format(location))
             return
         else:
-            warnings_dict[unicode(item["title"])] = unicode(item["summary"])
+            warnings_dict[item["title"]] = item["summary"]
 
     paste_code = ""
     for alert in warnings_dict:
