@@ -8,8 +8,10 @@ Licensed under the Eiffel Forum License 2.
 import json
 import re
 import os.path
-from urllib2 import HTTPError
-from urlparse import urlparse
+#from urllib2 import HTTPError
+#from urlparse import urlparse
+from urllib.error import HTTPError
+from urllib.urlparse import urlparse
 from willie.config import ConfigurationError
 from willie import web, tools
 from willie.module import rule
