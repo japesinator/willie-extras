@@ -2,7 +2,7 @@ from willie import module
 import urllib.request
 import json
 
-@commands('anagram')
+@module.commands('anagram')
 @priority('low')
 def anagram(bot, trigger):
     try:
