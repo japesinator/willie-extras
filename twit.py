@@ -121,7 +121,7 @@ def f_update(willie, trigger):
     auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
     api = tweepy.API(auth)
 
-    print api.me().name
+    print(api.me().name)
 
     update = str(trigger.group(2)) + " ^" + trigger.nick
     if len(update) <= 140:
