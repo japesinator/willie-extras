@@ -116,20 +116,20 @@ f_info.example = '.twitinfo aplsuk'
 
 def f_update(willie, trigger):
     """Tweet with Willie's account. Admin-only."""
-    if trigger.admin:
-        auth = tweepy.OAuthHandler(willie.config.twitter.consumer_key, willie.config.twitter.consumer_secret)
-        auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
-        api = tweepy.API(auth)
+    #if trigger.admin:
+    auth = tweepy.OAuthHandler(willie.config.twitter.consumer_key, willie.config.twitter.consumer_secret)
+    auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
+    api = tweepy.API(auth)
 
-        print api.me().name
+    print api.me().name
 
-        update = str(trigger.group(2)) + " ^" + trigger.nick
-        if len(update) <= 140:
-            api.update_status(update)
-            willie.reply("Successfully posted to my twitter account.")
-        else:
-            toofar = len(update) - 140
-            willie.reply("Please shorten the length of your message by: " + str(toofar) + " characters.")
+    update = str(trigger.group(2)) + " ^" + trigger.nick
+    if len(update) <= 140:
+        api.update_status(update)
+        willie.reply("Successfully posted to my twitter account.")
+    else:
+        toofar = len(update) - 140
+        willie.reply("Please shorten the length of your message by: " + str(toofar) + " characters.")
 f_update.commands = ['tweet']
 f_update.priority = 'medium'
 f_update.example = '.tweet Hello World!'
