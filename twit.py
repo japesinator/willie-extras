@@ -114,6 +114,23 @@ f_info.commands = ['twitinfo']
 f_info.priority = 'medium'
 f_info.example = '.twitinfo aplsuk'
 
+def f_follow(willie, trigger):
+    """Follow a provided user"""
+
+    auth = tweepy.OAuthHandler(willie.config.twitter.consumer_key, willie.config.twitter.consumer_secret)
+    auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
+    api = tweepy.API(auth)
+
+    print(api.me())
+
+    user = str(trigger.group(2))
+    api.create_friendship(user)
+
+    willie.reply("User " + user + " followed")
+f_follow.commands = ['follow']
+f_follow.priority = 'medium'
+f_follow.example = '.follow @b0tmi1k'
+
 def f_update(willie, trigger):
     """Tweet with Willie's account. Admin-only."""
     #if trigger.admin:
