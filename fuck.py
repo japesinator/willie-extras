@@ -9,6 +9,8 @@ import willie
 import random
 @willie.module.commands('fuck')
 def ball(bot, trigger):
-    bot.say("I'm a fucking twat...");
+    insults = ["I'm a fucking twat...", "I'm a useless piece of shit...", "I'm a backstabber, never trust me...", "I am a worthless machine..."]
+    insult = random.randint(0, len(insults))
+    bot.say(insults[insults]);
 
     
