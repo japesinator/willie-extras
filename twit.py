@@ -177,7 +177,7 @@ def f_reply(willie, trigger):
     if statusid.isdigit():
         update = incoming[18:]
         if len(update) <= 140:
-            api.update_status(update, statusid)
+            api.update_status(update, in_reply_to_status_id=statusid)
             willie.reply("Successfully posted to my twitter account.")
         else:
             toofar = len(update) - 140
