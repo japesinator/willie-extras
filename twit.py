@@ -173,7 +173,7 @@ def f_reply(willie, trigger):
     api = tweepy.API(auth)
 
     incoming = str(trigger.group(2))
-    statusid = incoming[0:17]
+    statusid = incoming[0:18]
     #if statusid.isdigit():
     update = incoming[18:]
     if len(update) <= 140:
