@@ -178,8 +178,7 @@ def f_reply(willie, trigger):
     if statusid.isdigit():
         update = incoming[1:]
         if len(update) <= 140:
-            statusid = int(statusid)
-            #api3.PostUpdate(str(" ".join(update)), in_reply_to_status_id=10503164300)
+            api.update_status(update, statusid)
             willie.reply("Successfully posted to my twitter account.")
         else:
             toofar = len(update) - 140
