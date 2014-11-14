@@ -186,7 +186,7 @@ def f_reply(willie, trigger):
             willie.reply("Please shorten the length of your message by: " + str(toofar) + " characters.")
     else:
         willie.reply("Please provide a status ID.")
-#f_reply.commands = ['reply']
+f_reply.commands = ['reply']
 f_reply.priority = 'medium'
 f_reply.example = '.reply 892379487 I like that idea!'
 
