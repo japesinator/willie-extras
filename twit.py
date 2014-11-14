@@ -173,10 +173,9 @@ def f_reply(willie, trigger):
     api = tweepy.API(auth)
 
     incoming = str(trigger.group(2))
-    incoming = incoming.split()
-    statusid = incoming[0]
+    statusid = incoming[0:17]
     if statusid.isdigit():
-        update = incoming[1:]
+        update = incoming[18:]
         if len(update) <= 140:
             api.update_status(update, statusid)
             willie.reply("Successfully posted to my twitter account.")
