@@ -173,17 +173,17 @@ def f_reply(willie, trigger):
     api = tweepy.API(auth)
 
     incoming = str(trigger.group(2))
-    statusid = int(incoming[0:17])
-    if statusid.isdigit():
-        update = incoming[18:]
-        if len(update) <= 140:
-            api.update_status(update, statusid)
-            willie.reply("Successfully posted to my twitter account.")
-        else:
-            toofar = len(update) - 140
-            willie.reply("Please shorten the length of your message by: " + str(toofar) + " characters.")
+    statusid = incoming[0:17]
+    #if statusid.isdigit():
+    update = incoming[18:]
+    if len(update) <= 140:
+        api.update_status(update, statusid)
+        willie.reply("Successfully posted to my twitter account.")
     else:
-        willie.reply("Please provide a status ID.")
+        toofar = len(update) - 140
+        willie.reply("Please shorten the length of your message by: " + str(toofar) + " characters.")
+    #else:
+    #    willie.reply("Please provide a status ID.")
 f_reply.commands = ['reply']
 f_reply.priority = 'medium'
 f_reply.example = '.reply 892379487 I like that idea!'
