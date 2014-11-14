@@ -173,11 +173,11 @@ def f_reply(willie, trigger):
     api = tweepy.API(auth)
 
     incoming = str(trigger.group(2))
-    statusid = incoming[0:17]
+    statusid = int(incoming[0:17])
     if statusid.isdigit():
         update = incoming[18:]
         if len(update) <= 140:
-            api.update_status(update, in_reply_to_status_id=statusid)
+            api.update_status(update, statusid)
             willie.reply("Successfully posted to my twitter account.")
         else:
             toofar = len(update) - 140
