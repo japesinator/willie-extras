@@ -195,7 +195,7 @@ def f_limits(willie, trigger):
     auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
     api = tweepy.API(auth)
 
-    limits = json.load(api.rate_limit_status())
+    limits = api.rate_limit_status()
 
     reset_time = time.strftime('%H:%M:%S', time.localtime(limits['rate_limit_context']['users']['/users/show/:id']['reset']))
 
