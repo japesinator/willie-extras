@@ -190,7 +190,7 @@ f_reply.commands = ['reply']
 f_reply.priority = 'medium'
 f_reply.example = '.reply 892379487 I like that idea!'
 
-def f_limits(willie):
+def f_limits(willie, trigger):
     auth = tweepy.OAuthHandler(willie.config.twitter.consumer_key, willie.config.twitter.consumer_secret)
     auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
     api = tweepy.API(auth)
