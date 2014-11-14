@@ -197,7 +197,7 @@ def f_limits(willie, trigger):
 
     limits = api.rate_limit_status()
 
-    reset_time = time.strftime('%H:%M:%S', time.localtime(limits['rate_limit_context']['resources']['users']['/users/show/:id']['reset']))
+    reset_time = time.strftime('%H:%M:%S', time.localtime(limits['resources']['users']['/users/show/:id']['reset']))
 
     willie.reply("Cooldown until: " + reset_time)
 f_limits.commands = ['limit']
