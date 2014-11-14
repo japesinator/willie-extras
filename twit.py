@@ -114,6 +114,22 @@ f_info.commands = ['twitinfo']
 f_info.priority = 'medium'
 f_info.example = '.twitinfo aplsuk'
 
+def f_retweet(willie, trigger):
+    """Retweet a tweet given a tweet id"""
+
+    auth = tweepy.OAuthHandler(willie.config.twitter.consumer_key, willie.config.twitter.consumer_secret)
+    auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
+    api = tweepy.API(auth)
+
+    tweet_id = str(trigger.group(2))
+    try:
+        api.retweet(tweet_id)
+        willie.reply("Tweet " + tweet_id + " retweeted")
+    except:
+        wille.reply("Something dun fuqd up")
+f_retweet.commands = [ 'rt', 'retweet' ]
+f_retweet.priority = 'medium'
+
 def f_follow(willie, trigger):
     """Follow a provided user"""
 
