@@ -200,6 +200,8 @@ def f_limits(willie):
     reset_time = time.strftime('%H:%M:%S', time.localtime(limits['rate_limit_context']['users']['/users/show/:id']['reset']))
 
     wille.reply("Cooldown until: " + reset_time)
+f_limits.commands = ['limit']
+f_reply.priority = 'medium'
 
 if __name__ == '__main__':
     print(__doc__.strip())
