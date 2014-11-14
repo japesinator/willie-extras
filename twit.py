@@ -13,6 +13,8 @@ from willie.config import ConfigurationError
 from willie import tools
 from willie.module import rule
 import sys
+import json
+
 if sys.version_info.major < 3:
     str = unicode
 
@@ -187,6 +189,17 @@ def f_reply(willie, trigger):
 f_reply.commands = ['reply']
 f_reply.priority = 'medium'
 f_reply.example = '.reply 892379487 I like that idea!'
+
+def f_limits(willie):
+    auth = tweepy.OAuthHandler(willie.config.twitter.consumer_key, willie.config.twitter.consumer_secret)
+    auth.set_access_token(willie.config.twitter.access_token, willie.config.twitter.access_token_secret)
+    api = tweepy.API(auth)
+
+    limits = json.loads(api.rate_limit_status())
+
+    reset_time = time.strftime('%H:%M:%S', time.localtime(limits['rate_limit_context']['users']['/users/show/:id']['reset']))
+
+    wille.reply("Cooldown until: " + reset_time)
 
 if __name__ == '__main__':
     print(__doc__.strip())
